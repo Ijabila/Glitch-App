@@ -1,5 +1,5 @@
 import React from 'react';
-import { TouchableOpacity, View, Text, Image, StyleSheet } from 'react-native';
+import { TouchableOpacity, View, Text, Image, StyleSheet, Linking } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
@@ -7,13 +7,22 @@ import { MaterialIcons } from '@expo/vector-icons';
 const ComponentScreen = () => {
 
     return (
+        
+        //putting all the components into a single container
+
         <View style={styles.container}>
-           
+
+            {/*the main image is in a view element to enable easier styling */}
+
             <View style={styles.shadow}>
                 <Image style={styles.image} source={require('../../assets/pic.jpg')} />
             </View>
 
+            {/*main heading with bearing name, supposed to be dynamically gotten from the API but I couldn't figure out how to do that early enough */}
+
             <Text style={styles.text}>AQUILA  AVEION</Text>
+
+            {/*page links */}
 
                 <Text style={styles.home}>HOME</Text>
 
@@ -23,15 +32,27 @@ const ComponentScreen = () => {
 
                 <Text style={styles.contact}>CONTACT</Text>
 
+            {/*smaller picture with a rounded border radius */}
+
             <View >
                 <Image style={styles.image2} source={require('../../assets/pic2.jpg')} />
             </View>
 
+            {/*sidebar social media links, which again, was supposed to be dynamic */}
+
             <View style={styles.iconBar}>
-                <AntDesign name="instagram" size={24} color="white" />
-                <AntDesign name="twitter" size={24} color="white" />
-                <FontAwesome name="snapchat-ghost" size={24} color="white" />
-                <MaterialIcons name="email" size={24} color="white" />
+                <TouchableOpacity>
+                <AntDesign name="instagram" size={24} color="white" onPress={() => Linking.openURL('https://www.instagram.com/aquilaveionofficial')}/>
+                </TouchableOpacity>
+                <TouchableOpacity>
+                <AntDesign name="twitter" size={24} color="white" onPress={() => Linking.openURL('https://www.twitter.com/aquilaveion')}/>
+                </TouchableOpacity>
+                <TouchableOpacity>
+                <FontAwesome name="snapchat-ghost" size={24} color="white" onPress={() => Linking.openURL('https://www.snapchat.com/aquilaveionsnaps')}/>
+                </TouchableOpacity>
+                <TouchableOpacity>
+                <MaterialIcons name="email" size={24} color="white" onPress={() => Linking.openURL('https://aquilaveion@aquil.com')}/>
+                </TouchableOpacity>
             </View>
 
 
